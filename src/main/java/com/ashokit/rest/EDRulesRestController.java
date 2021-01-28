@@ -2,6 +2,7 @@ package com.ashokit.rest;
 
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,20 +11,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ashokit.binding.ResponseBody;
+import com.ashokit.service.EDRulesService;
 
 @RestController
 public class EDRulesRestController {
 	
+	@Autowired
+	private EDRulesService service;
+	
 	@PostMapping("/findPlanElgi")
 	public ResponseEntity<ResponseBody> handleEligiblityDeterminationButton(@RequestBody com.ashokit.binding.RequestBody body){
-		ResponseBody resbody=new ResponseBody();
-		resbody.setCaseNumber("101");
-		resbody.setBenefitAmt(5555.05);
-		resbody.setPlanName("SNAP");
-		resbody.setPlanStatus("AP");
-		resbody.setStartDate(new Date());
-		resbody.setEndDate(new Date());
-		return new ResponseEntity<ResponseBody>(resbody,HttpStatus.OK);
+		ResponseBody responseBody = service.determineElibility(body);
+		return new ResponseEntity<ResponseBody>(responseBody,HttpStatus.OK);
 	}
 
 
