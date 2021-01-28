@@ -1,9 +1,9 @@
 package com.ashokit.service;
 
-import com.ashokit.binding.RequestBody;
-import com.ashokit.binding.ResponseBody;
+import com.ashokit.binding.EDRequestBody;
+import com.ashokit.binding.EDResponseBody;
 
 public interface EDRulesService {
 
-	public ResponseBody determineElibility(RequestBody body);
+	public EDResponseBody determineElibility(EDRequestBody body);
 }

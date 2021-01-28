@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ashokit.binding.ResponseBody;
+import com.ashokit.binding.EDResponseBody;
 import com.ashokit.service.EDRulesService;
 
 @RestController
@@ -20,9 +20,9 @@ public class EDRulesRestController {
 	private EDRulesService service;
 	
 	@PostMapping("/findPlanElgi")
-	public ResponseEntity<ResponseBody> handleEligiblityDeterminationButton(@RequestBody com.ashokit.binding.RequestBody body){
-		ResponseBody responseBody = service.determineElibility(body);
-		return new ResponseEntity<ResponseBody>(responseBody,HttpStatus.OK);
+	public ResponseEntity<EDResponseBody> handleEligiblityDeterminationButton(@RequestBody com.ashokit.binding.EDRequestBody body){
+		EDResponseBody responseBody = service.determineElibility(body);
+		return new ResponseEntity<EDResponseBody>(responseBody,HttpStatus.OK);
 	}
 
 

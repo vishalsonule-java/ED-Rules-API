@@ -4,16 +4,16 @@ import java.util.Date;
 
 import org.springframework.stereotype.Service;
 
-import com.ashokit.binding.RequestBody;
-import com.ashokit.binding.ResponseBody;
+import com.ashokit.binding.EDRequestBody;
+import com.ashokit.binding.EDResponseBody;
 
 @Service
 public class EDRulesServiceImpl implements EDRulesService {
 
 	@Override
-	public ResponseBody determineElibility(RequestBody body) {
+	public EDResponseBody determineElibility(EDRequestBody body) {
 
-		ResponseBody resBody= new ResponseBody();
+		EDResponseBody resBody= new EDResponseBody();
 		resBody.setCaseNumber(body.getCaseNumber());
 		resBody.setPlanName(body.getPlanName());
 		

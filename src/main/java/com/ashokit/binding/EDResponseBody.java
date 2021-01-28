@@ -6,7 +6,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class ResponseBody implements Serializable {
+public class EDResponseBody implements Serializable {
 
 	private static final long serialVersionUID = 7291745843649378993L;
 	
