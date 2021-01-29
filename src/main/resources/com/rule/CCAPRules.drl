@@ -1,0 +1,27 @@
+package com.rule;
+
+import com.ashokit.binding.EDRequestBody;
+import com.ashokit.binding.EDResponseBody;
+import java.util.Date;
+
+global EDResponseBody response;
+
+rule "CCAP Rule 1"
+
+	when 
+		eDRequestBody: EDRequestBody(kidsCount>0)
+	then
+		response.setPlanStatus("AP");
+		response.setStartDate(new Date());
+		response.setEndDate(new Date());
+		response.setBenefitAmt(200.0);
+	end
+	
+	rule "CCAP Rule 2"
+	
+	when 
+		eDRequestBody: EDRequestBody(kidsCount<=0)
+	then
+		response.setPlanStatus("DN");
+		response.setDenialReason("No Kids");
+	end

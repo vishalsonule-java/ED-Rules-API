@@ -1,0 +1,27 @@
+package com.rule;
+
+import com.ashokit.binding.EDRequestBody;
+import com.ashokit.binding.EDResponseBody;
+import java.util.Date;
+
+global EDResponseBody response;
+
+rule "SNAP Rule 1"
+
+	when 
+		eDRequestBody: EDRequestBody(isEmployed==true)
+	then
+		response.setPlanStatus("DN");
+		response.setDenialReason("Citizen is employee");
+	end
+	
+	rule "SNAP Rule 2"
+	
+	when 
+		eDRequestBody: EDRequestBody(isEmployed==false)
+	then
+		response.setPlanStatus("AP");
+		response.setStartDate(new Date());
+		response.setEndDate(new Date());
+		response.setBenefitAmt(500.0);
+	end
